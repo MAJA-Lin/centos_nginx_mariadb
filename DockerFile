@@ -1,0 +1,19 @@
+FROM centos
+
+MAINTAINER typhoon31815@gmail.com
+
+RUN yum -y install wget
+RUN yum -y install mariadb
+RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+RUN yum -y install nginx
+RUN yum -y install php70w
+RUN wget https://phar.phpunit.de/phpunit.phar
+RUN chmod +x phpunit.phar
+RUN mv phpunit.phar /usr/local/bin/phpunit
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+RUN yum -y install redis
+RUN yum -y install httpd-tools
+
+EXPOSE 80
